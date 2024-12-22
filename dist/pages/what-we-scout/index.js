@@ -240,13 +240,13 @@
           if (0 === disabledDepth) {
             var props = { configurable: true, enumerable: true, writable: true };
             Object.defineProperties(console, {
-              log: assign3({}, props, { value: prevLog }),
-              info: assign3({}, props, { value: prevInfo }),
-              warn: assign3({}, props, { value: prevWarn }),
-              error: assign3({}, props, { value: prevError }),
-              group: assign3({}, props, { value: prevGroup }),
-              groupCollapsed: assign3({}, props, { value: prevGroupCollapsed }),
-              groupEnd: assign3({}, props, { value: prevGroupEnd })
+              log: assign2({}, props, { value: prevLog }),
+              info: assign2({}, props, { value: prevInfo }),
+              warn: assign2({}, props, { value: prevWarn }),
+              error: assign2({}, props, { value: prevError }),
+              group: assign2({}, props, { value: prevGroup }),
+              groupCollapsed: assign2({}, props, { value: prevGroupCollapsed }),
+              groupEnd: assign2({}, props, { value: prevGroupEnd })
             });
           }
           0 > disabledDepth && console.error(
@@ -520,14 +520,14 @@
           info || (parentType = getComponentNameFromType(parentType)) && (info = "\n\nCheck the top-level render call using <" + parentType + ">.");
           return info;
         }
-        function escape2(key) {
+        function escape(key) {
           var escaperLookup = { "=": "=0", ":": "=2" };
           return "$" + key.replace(/[=:]/g, function(match2) {
             return escaperLookup[match2];
           });
         }
         function getElementKey(element, index) {
-          return "object" === typeof element && null !== element && null != element.key ? (checkKeyStringCoercion(element.key), escape2("" + element.key)) : index.toString(36);
+          return "object" === typeof element && null !== element && null != element.key ? (checkKeyStringCoercion(element.key), escape("" + element.key)) : index.toString(36);
         }
         function noop$1() {
         }
@@ -772,7 +772,7 @@
           enqueueSetState: function(publicInstance) {
             warnNoop(publicInstance, "setState");
           }
-        }, assign3 = Object.assign, emptyObject = {};
+        }, assign2 = Object.assign, emptyObject = {};
         Object.freeze(emptyObject);
         Component.prototype.isReactComponent = {};
         Component.prototype.setState = function(partialState, callback) {
@@ -800,7 +800,7 @@
         ComponentDummy.prototype = Component.prototype;
         deprecatedAPIs = PureComponent.prototype = new ComponentDummy();
         deprecatedAPIs.constructor = PureComponent;
-        assign3(deprecatedAPIs, Component.prototype);
+        assign2(deprecatedAPIs, Component.prototype);
         deprecatedAPIs.isPureReactComponent = true;
         var isArrayImpl = Array.isArray, REACT_CLIENT_REFERENCE$2 = Symbol.for("react.client.reference"), ReactSharedInternals = {
           H: null,
@@ -965,7 +965,7 @@
             throw Error(
               "The argument must be a React element, but you passed " + element + "."
             );
-          var props = assign3({}, element.props), key = element.key, owner = element._owner;
+          var props = assign2({}, element.props), key = element.key, owner = element._owner;
           if (null != config) {
             var JSCompiler_inline_result;
             a: {
@@ -1189,8 +1189,8 @@
         exports.useOptimistic = function(passthrough, reducer) {
           return resolveDispatcher().useOptimistic(passthrough, reducer);
         };
-        exports.useReducer = function(reducer, initialArg, init2) {
-          return resolveDispatcher().useReducer(reducer, initialArg, init2);
+        exports.useReducer = function(reducer, initialArg, init) {
+          return resolveDispatcher().useReducer(reducer, initialArg, init);
         };
         exports.useRef = function(initialValue) {
           return resolveDispatcher().useRef(initialValue);
@@ -1835,11 +1835,11 @@
         };
         Class.addInitHook = function(fn) {
           var args = Array.prototype.slice.call(arguments, 1);
-          var init2 = typeof fn === "function" ? fn : function() {
+          var init = typeof fn === "function" ? fn : function() {
             this[fn].apply(this, args);
           };
           this.prototype._initHooks = this.prototype._initHooks || [];
-          this.prototype._initHooks.push(init2);
+          this.prototype._initHooks.push(init);
           return this;
         };
         function checkDeprecatedMixinEvents(includes) {
@@ -10617,7 +10617,7 @@
           }
           return -9999;
         };
-        function init2() {
+        function init() {
           var con = this.b / this.a;
           this.es = 1 - con * con;
           if (!("x0" in this)) {
@@ -10687,7 +10687,7 @@
         }
         var names$1 = ["Mercator", "Popular Visualisation Pseudo Mercator", "Mercator_1SP", "Mercator_Auxiliary_Sphere", "merc"];
         var merc = {
-          init: init2,
+          init,
           forward,
           inverse,
           names: names$1
@@ -16707,7 +16707,7 @@
         function copyWithSetImpl(obj, path, index, value) {
           if (index >= path.length)
             return value;
-          var key = path[index], updated = isArrayImpl(obj) ? obj.slice() : assign3({}, obj);
+          var key = path[index], updated = isArrayImpl(obj) ? obj.slice() : assign2({}, obj);
           updated[key] = copyWithSetImpl(obj[key], path, index + 1, value);
           return updated;
         }
@@ -16726,7 +16726,7 @@
           }
         }
         function copyWithRenameImpl(obj, oldPath, newPath, index) {
-          var oldKey = oldPath[index], updated = isArrayImpl(obj) ? obj.slice() : assign3({}, obj);
+          var oldKey = oldPath[index], updated = isArrayImpl(obj) ? obj.slice() : assign2({}, obj);
           index + 1 === oldPath.length ? (updated[newPath[index]] = updated[oldKey], isArrayImpl(updated) ? updated.splice(oldKey, 1) : delete updated[oldKey]) : updated[oldKey] = copyWithRenameImpl(
             obj[oldKey],
             oldPath,
@@ -16736,7 +16736,7 @@
           return updated;
         }
         function copyWithDeleteImpl(obj, path, index) {
-          var key = path[index], updated = isArrayImpl(obj) ? obj.slice() : assign3({}, obj);
+          var key = path[index], updated = isArrayImpl(obj) ? obj.slice() : assign2({}, obj);
           if (index + 1 === path.length)
             return isArrayImpl(updated) ? updated.splice(key, 1) : delete updated[key], updated;
           updated[key] = copyWithDeleteImpl(obj[key], path, index + 1);
@@ -16945,13 +16945,13 @@
           if (0 === disabledDepth) {
             var props = { configurable: true, enumerable: true, writable: true };
             Object.defineProperties(console, {
-              log: assign3({}, props, { value: prevLog }),
-              info: assign3({}, props, { value: prevInfo }),
-              warn: assign3({}, props, { value: prevWarn }),
-              error: assign3({}, props, { value: prevError }),
-              group: assign3({}, props, { value: prevGroup }),
-              groupCollapsed: assign3({}, props, { value: prevGroupCollapsed }),
-              groupEnd: assign3({}, props, { value: prevGroupEnd })
+              log: assign2({}, props, { value: prevLog }),
+              info: assign2({}, props, { value: prevInfo }),
+              warn: assign2({}, props, { value: prevWarn }),
+              error: assign2({}, props, { value: prevError }),
+              group: assign2({}, props, { value: prevGroup }),
+              groupCollapsed: assign2({}, props, { value: prevGroupCollapsed }),
+              groupEnd: assign2({}, props, { value: prevGroupEnd })
             });
           }
           0 > disabledDepth && console.error(
@@ -18213,7 +18213,7 @@
           return 0 === properties.length ? rowPrefix + "<" + type + ">\n" : 0 < remainingRowLength ? rowPrefix + "<" + type + " " + properties.join(" ") + ">\n" : rowPrefix + "<" + type + "\n" + rowPrefix + "  " + properties.join("\n" + rowPrefix + "  ") + "\n" + rowPrefix + ">\n";
         }
         function describePropertiesDiff(clientObject, serverObject, indent) {
-          var properties = "", remainingServerProperties = assign3({}, serverObject), propName;
+          var properties = "", remainingServerProperties = assign2({}, serverObject), propName;
           for (propName in clientObject)
             if (clientObject.hasOwnProperty(propName)) {
               delete remainingServerProperties[propName];
@@ -18371,7 +18371,7 @@
           return null !== node2 ? describeDiff(node2).replaceAll(/^[+-]/gm, ">") : "";
         }
         function updatedAncestorInfoDev(oldInfo, tag) {
-          oldInfo = assign3({}, oldInfo || emptyAncestorInfoDev);
+          oldInfo = assign2({}, oldInfo || emptyAncestorInfoDev);
           var info = { tag };
           -1 !== inScopeTags.indexOf(tag) && (oldInfo.aTagInScope = null, oldInfo.buttonTagInScope = null, oldInfo.nobrTagInScope = null);
           -1 !== buttonScopeTags.indexOf(tag) && (oldInfo.pTagInButtonScope = null);
@@ -19085,7 +19085,7 @@
             this.isPropagationStopped = functionThatReturnsFalse;
             return this;
           }
-          assign3(SyntheticBaseEvent.prototype, {
+          assign2(SyntheticBaseEvent.prototype, {
             preventDefault: function() {
               this.defaultPrevented = true;
               var event = this.nativeEvent;
@@ -21012,14 +21012,14 @@
         function basicStateReducer(state, action) {
           return "function" === typeof action ? action(state) : action;
         }
-        function mountReducer(reducer, initialArg, init2) {
+        function mountReducer(reducer, initialArg, init) {
           var hook = mountWorkInProgressHook();
-          if (void 0 !== init2) {
-            var initialState = init2(initialArg);
+          if (void 0 !== init) {
+            var initialState = init(initialArg);
             if (shouldDoubleInvokeUserFnsInHooksDEV) {
               setIsStrictModeForDevtools(true);
               try {
-                init2(initialArg);
+                init(initialArg);
               } finally {
                 setIsStrictModeForDevtools(false);
               }
@@ -22035,7 +22035,7 @@
             "%s.getDerivedStateFromProps(): A valid state object (or null) must be returned. You have returned undefined.",
             ctor
           )));
-          prevState = null === partialState || void 0 === partialState ? prevState : assign3({}, prevState, partialState);
+          prevState = null === partialState || void 0 === partialState ? prevState : assign2({}, prevState, partialState);
           workInProgress2.memoizedState = prevState;
           0 === workInProgress2.lanes && (workInProgress2.updateQueue.baseState = prevState);
         }
@@ -22088,7 +22088,7 @@
               "ref" !== propName && (newProps[propName] = baseProps[propName]);
           }
           if (Component = Component.defaultProps) {
-            newProps === baseProps && (newProps = assign3({}, newProps));
+            newProps === baseProps && (newProps = assign2({}, newProps));
             for (var _propName in Component)
               void 0 === newProps[_propName] && (newProps[_propName] = Component[_propName]);
           }
@@ -24225,7 +24225,7 @@
                         partialState = nextState;
                       if (null === partialState || void 0 === partialState)
                         break a;
-                      newState = assign3({}, newState, partialState);
+                      newState = assign2({}, newState, partialState);
                       break a;
                     case ForceUpdate:
                       hasForceUpdate = true;
@@ -30727,7 +30727,7 @@
           return 'link[rel="stylesheet"][' + key + "]";
         }
         function stylesheetPropsFromRawProps(rawProps) {
-          return assign3({}, rawProps, {
+          return assign2({}, rawProps, {
             "data-precedence": rawProps.precedence,
             precedence: null
           });
@@ -30757,7 +30757,7 @@
                 );
                 if (instance)
                   return resource.instance = instance, markNodeAsHoistable(instance), instance;
-                var styleProps = assign3({}, props, {
+                var styleProps = assign2({}, props, {
                   "data-href": props.href,
                   "data-precedence": props.precedence,
                   href: null,
@@ -30796,7 +30796,7 @@
                   return resource.instance = styleProps, markNodeAsHoistable(styleProps), styleProps;
                 instance = props;
                 if (styleProps = preloadPropsMap.get(_instance))
-                  instance = assign3({}, props), adoptPreloadPropsForScript(instance, styleProps);
+                  instance = assign2({}, props), adoptPreloadPropsForScript(instance, styleProps);
                 hoistableRoot = hoistableRoot.ownerDocument || hoistableRoot;
                 styleProps = hoistableRoot.createElement("script");
                 markNodeAsHoistable(styleProps);
@@ -31668,7 +31668,7 @@
         var REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen");
         Symbol.for("react.legacy_hidden");
         Symbol.for("react.tracing_marker");
-        var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, assign3 = Object.assign, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
+        var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, assign2 = Object.assign, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
         disabledLog.__reactDisabledLog = true;
         var prefix2, suffix, reentry = false;
         var componentFrameCache = new ("function" === typeof WeakMap ? WeakMap : Map)();
@@ -32492,7 +32492,7 @@
           },
           defaultPrevented: 0,
           isTrusted: 0
-        }, SyntheticEvent = createSyntheticEvent(EventInterface), UIEventInterface = assign3({}, EventInterface, { view: 0, detail: 0 }), SyntheticUIEvent = createSyntheticEvent(UIEventInterface), lastMovementX, lastMovementY, lastMouseEvent, MouseEventInterface = assign3({}, UIEventInterface, {
+        }, SyntheticEvent = createSyntheticEvent(EventInterface), UIEventInterface = assign2({}, EventInterface, { view: 0, detail: 0 }), SyntheticUIEvent = createSyntheticEvent(UIEventInterface), lastMovementX, lastMovementY, lastMouseEvent, MouseEventInterface = assign2({}, UIEventInterface, {
           screenX: 0,
           screenY: 0,
           clientX: 0,
@@ -32518,15 +32518,15 @@
           movementY: function(event) {
             return "movementY" in event ? event.movementY : lastMovementY;
           }
-        }), SyntheticMouseEvent = createSyntheticEvent(MouseEventInterface), DragEventInterface = assign3({}, MouseEventInterface, { dataTransfer: 0 }), SyntheticDragEvent = createSyntheticEvent(DragEventInterface), FocusEventInterface = assign3({}, UIEventInterface, { relatedTarget: 0 }), SyntheticFocusEvent = createSyntheticEvent(FocusEventInterface), AnimationEventInterface = assign3({}, EventInterface, {
+        }), SyntheticMouseEvent = createSyntheticEvent(MouseEventInterface), DragEventInterface = assign2({}, MouseEventInterface, { dataTransfer: 0 }), SyntheticDragEvent = createSyntheticEvent(DragEventInterface), FocusEventInterface = assign2({}, UIEventInterface, { relatedTarget: 0 }), SyntheticFocusEvent = createSyntheticEvent(FocusEventInterface), AnimationEventInterface = assign2({}, EventInterface, {
           animationName: 0,
           elapsedTime: 0,
           pseudoElement: 0
-        }), SyntheticAnimationEvent = createSyntheticEvent(AnimationEventInterface), ClipboardEventInterface = assign3({}, EventInterface, {
+        }), SyntheticAnimationEvent = createSyntheticEvent(AnimationEventInterface), ClipboardEventInterface = assign2({}, EventInterface, {
           clipboardData: function(event) {
             return "clipboardData" in event ? event.clipboardData : window.clipboardData;
           }
-        }), SyntheticClipboardEvent = createSyntheticEvent(ClipboardEventInterface), CompositionEventInterface = assign3({}, EventInterface, { data: 0 }), SyntheticCompositionEvent = createSyntheticEvent(
+        }), SyntheticClipboardEvent = createSyntheticEvent(ClipboardEventInterface), CompositionEventInterface = assign2({}, EventInterface, { data: 0 }), SyntheticCompositionEvent = createSyntheticEvent(
           CompositionEventInterface
         ), SyntheticInputEvent = SyntheticCompositionEvent, normalizeKey = {
           Esc: "Escape",
@@ -32583,7 +32583,7 @@
           Control: "ctrlKey",
           Meta: "metaKey",
           Shift: "shiftKey"
-        }, KeyboardEventInterface = assign3({}, UIEventInterface, {
+        }, KeyboardEventInterface = assign2({}, UIEventInterface, {
           key: function(nativeEvent) {
             if (nativeEvent.key) {
               var key = normalizeKey[nativeEvent.key] || nativeEvent.key;
@@ -32610,7 +32610,7 @@
           which: function(event) {
             return "keypress" === event.type ? getEventCharCode(event) : "keydown" === event.type || "keyup" === event.type ? event.keyCode : 0;
           }
-        }), SyntheticKeyboardEvent = createSyntheticEvent(KeyboardEventInterface), PointerEventInterface = assign3({}, MouseEventInterface, {
+        }), SyntheticKeyboardEvent = createSyntheticEvent(KeyboardEventInterface), PointerEventInterface = assign2({}, MouseEventInterface, {
           pointerId: 0,
           width: 0,
           height: 0,
@@ -32621,7 +32621,7 @@
           twist: 0,
           pointerType: 0,
           isPrimary: 0
-        }), SyntheticPointerEvent = createSyntheticEvent(PointerEventInterface), TouchEventInterface = assign3({}, UIEventInterface, {
+        }), SyntheticPointerEvent = createSyntheticEvent(PointerEventInterface), TouchEventInterface = assign2({}, UIEventInterface, {
           touches: 0,
           targetTouches: 0,
           changedTouches: 0,
@@ -32630,11 +32630,11 @@
           ctrlKey: 0,
           shiftKey: 0,
           getModifierState: getEventModifierState
-        }), SyntheticTouchEvent = createSyntheticEvent(TouchEventInterface), TransitionEventInterface = assign3({}, EventInterface, {
+        }), SyntheticTouchEvent = createSyntheticEvent(TouchEventInterface), TransitionEventInterface = assign2({}, EventInterface, {
           propertyName: 0,
           elapsedTime: 0,
           pseudoElement: 0
-        }), SyntheticTransitionEvent = createSyntheticEvent(TransitionEventInterface), WheelEventInterface = assign3({}, MouseEventInterface, {
+        }), SyntheticTransitionEvent = createSyntheticEvent(TransitionEventInterface), WheelEventInterface = assign2({}, MouseEventInterface, {
           deltaX: function(event) {
             return "deltaX" in event ? event.deltaX : "wheelDeltaX" in event ? -event.wheelDeltaX : 0;
           },
@@ -32643,7 +32643,7 @@
           },
           deltaZ: 0,
           deltaMode: 0
-        }), SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface), ToggleEventInterface = assign3({}, EventInterface, {
+        }), SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface), ToggleEventInterface = assign2({}, EventInterface, {
           newState: 0,
           oldState: 0
         }), SyntheticToggleEvent = createSyntheticEvent(ToggleEventInterface), END_KEYCODES = [9, 13, 27, 32], START_KEYCODE = 229, canUseCompositionEvent = canUseDOM && "CompositionEvent" in window, documentMode = null;
@@ -32892,8 +32892,8 @@
           }
         }, callDestroyInDEV = callDestroy["react-stack-bottom-frame"].bind(callDestroy), callLazyInit = {
           "react-stack-bottom-frame": function(lazy) {
-            var init2 = lazy._init;
-            return init2(lazy._payload);
+            var init = lazy._init;
+            return init(lazy._payload);
           }
         }, callLazyInitInDEV = callLazyInit["react-stack-bottom-frame"].bind(callLazyInit), thenableState$1 = null, thenableIndexCounter$1 = 0, currentDebugInfo = null, didWarnAboutMaps;
         var didWarnAboutGenerators = didWarnAboutMaps = false;
@@ -33041,13 +33041,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             mountHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnMountInDEV;
             try {
-              return mountReducer(reducer, initialArg, init2);
+              return mountReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -33166,13 +33166,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnMountInDEV;
             try {
-              return mountReducer(reducer, initialArg, init2);
+              return mountReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -33291,13 +33291,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnUpdateInDEV;
             try {
-              return updateReducer(reducer, initialArg, init2);
+              return updateReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -33416,13 +33416,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnRerenderInDEV;
             try {
-              return rerenderReducer(reducer, initialArg, init2);
+              return rerenderReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -33552,14 +33552,14 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             warnInvalidHookAccess();
             mountHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnMountInDEV;
             try {
-              return mountReducer(reducer, initialArg, init2);
+              return mountReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -33701,14 +33701,14 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             warnInvalidHookAccess();
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnUpdateInDEV;
             try {
-              return updateReducer(reducer, initialArg, init2);
+              return updateReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -33850,14 +33850,14 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init2) {
+          useReducer: function(reducer, initialArg, init) {
             currentHookNameInDev = "useReducer";
             warnInvalidHookAccess();
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnUpdateInDEV;
             try {
-              return rerenderReducer(reducer, initialArg, init2);
+              return rerenderReducer(reducer, initialArg, init);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -34158,7 +34158,7 @@
                 case "script":
                   key = getScriptKey(href);
               }
-              preloadPropsMap.has(key) || (href = assign3(
+              preloadPropsMap.has(key) || (href = assign2(
                 {
                   rel: "preload",
                   href: "image" === as && options && options.imageSrcSet ? void 0 : href,
@@ -34184,7 +34184,7 @@
                 case "script":
                   key = getScriptKey(href);
               }
-              if (!preloadPropsMap.has(key) && (href = assign3({ rel: "modulepreload", href }, options), preloadPropsMap.set(key, href), null === ownerDocument.querySelector(preloadSelector))) {
+              if (!preloadPropsMap.has(key) && (href = assign2({ rel: "modulepreload", href }, options), preloadPropsMap.set(key, href), null === ownerDocument.querySelector(preloadSelector))) {
                 switch (as) {
                   case "audioworklet":
                   case "paintworklet":
@@ -34209,7 +34209,7 @@
               var scripts = getResourcesFromRoot(ownerDocument).hoistableScripts, key = getScriptKey(src), resource = scripts.get(key);
               resource || (resource = ownerDocument.querySelector(
                 getScriptSelectorFromKey(key)
-              ), resource || (src = assign3({ src, async: true }, options), (options = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options), resource = ownerDocument.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument.head.appendChild(resource)), resource = {
+              ), resource || (src = assign2({ src, async: true }, options), (options = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options), resource = ownerDocument.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument.head.appendChild(resource)), resource = {
                 type: "script",
                 instance: resource,
                 count: 1,
@@ -34231,7 +34231,7 @@
                 ))
                   state.loading = Loaded | Inserted;
                 else {
-                  href = assign3(
+                  href = assign2(
                     {
                       rel: "stylesheet",
                       href,
@@ -34273,7 +34273,7 @@
               var scripts = getResourcesFromRoot(ownerDocument).hoistableScripts, key = getScriptKey(src), resource = scripts.get(key);
               resource || (resource = ownerDocument.querySelector(
                 getScriptSelectorFromKey(key)
-              ), resource || (src = assign3({ src, async: true, type: "module" }, options), (options = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options), resource = ownerDocument.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument.head.appendChild(resource)), resource = {
+              ), resource || (src = assign2({ src, async: true, type: "module" }, options), (options = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options), resource = ownerDocument.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument.head.appendChild(resource)), resource = {
                 type: "script",
                 instance: resource,
                 count: 1,
@@ -34294,15 +34294,15 @@
         var overrideHookState = null, overrideHookStateDeletePath = null, overrideHookStateRenamePath = null, overrideProps = null, overridePropsDeletePath = null, overridePropsRenamePath = null, scheduleUpdate = null, setErrorHandler = null, setSuspenseHandler = null;
         overrideHookState = function(fiber, id, path, value) {
           id = findHook(fiber, id);
-          null !== id && (path = copyWithSetImpl(id.memoizedState, path, 0, value), id.memoizedState = path, id.baseState = path, fiber.memoizedProps = assign3({}, fiber.memoizedProps), path = enqueueConcurrentRenderForLane(fiber, 2), null !== path && scheduleUpdateOnFiber(path, fiber, 2));
+          null !== id && (path = copyWithSetImpl(id.memoizedState, path, 0, value), id.memoizedState = path, id.baseState = path, fiber.memoizedProps = assign2({}, fiber.memoizedProps), path = enqueueConcurrentRenderForLane(fiber, 2), null !== path && scheduleUpdateOnFiber(path, fiber, 2));
         };
         overrideHookStateDeletePath = function(fiber, id, path) {
           id = findHook(fiber, id);
-          null !== id && (path = copyWithDeleteImpl(id.memoizedState, path, 0), id.memoizedState = path, id.baseState = path, fiber.memoizedProps = assign3({}, fiber.memoizedProps), path = enqueueConcurrentRenderForLane(fiber, 2), null !== path && scheduleUpdateOnFiber(path, fiber, 2));
+          null !== id && (path = copyWithDeleteImpl(id.memoizedState, path, 0), id.memoizedState = path, id.baseState = path, fiber.memoizedProps = assign2({}, fiber.memoizedProps), path = enqueueConcurrentRenderForLane(fiber, 2), null !== path && scheduleUpdateOnFiber(path, fiber, 2));
         };
         overrideHookStateRenamePath = function(fiber, id, oldPath, newPath) {
           id = findHook(fiber, id);
-          null !== id && (oldPath = copyWithRename(id.memoizedState, oldPath, newPath), id.memoizedState = oldPath, id.baseState = oldPath, fiber.memoizedProps = assign3({}, fiber.memoizedProps), oldPath = enqueueConcurrentRenderForLane(fiber, 2), null !== oldPath && scheduleUpdateOnFiber(oldPath, fiber, 2));
+          null !== id && (oldPath = copyWithRename(id.memoizedState, oldPath, newPath), id.memoizedState = oldPath, id.baseState = oldPath, fiber.memoizedProps = assign2({}, fiber.memoizedProps), oldPath = enqueueConcurrentRenderForLane(fiber, 2), null !== oldPath && scheduleUpdateOnFiber(oldPath, fiber, 2));
         };
         overrideProps = function(fiber, path, value) {
           fiber.pendingProps = copyWithSetImpl(fiber.memoizedProps, path, 0, value);
@@ -34534,363 +34534,6 @@
     }
   });
 
-  // src/pages/home.ts
-  var HomePage = class {
-    constructor() {
-    }
-    setup() {
-    }
-    exec() {
-    }
-  };
-
-  // node_modules/@sygnal/sse/dist/script.js
-  var ScriptElement = class extends HTMLScriptElement {
-    constructor(src, config) {
-      super();
-      this.src = src;
-      if (config) {
-        if (config.type) {
-          this.type = config.type;
-        }
-        if (config.id) {
-          this.id = config.id;
-        }
-        if (config.async !== void 0) {
-          this.async = config.async;
-        }
-        if (config.defer !== void 0) {
-          this.defer = config.defer;
-        }
-        if (config.customAttributes) {
-          for (const [key, value] of Object.entries(config.customAttributes)) {
-            this.setAttribute(key, value);
-          }
-        }
-      }
-    }
-    appendTo(target = "body") {
-      const parent = target === "head" ? document.head : document.body;
-      parent.appendChild(this);
-    }
-    prependTo(target = "body") {
-      const parent = target === "head" ? document.head : document.body;
-      parent.prepend(this);
-    }
-  };
-  customElements.define("custom-script", ScriptElement, { extends: "script" });
-
-  // node_modules/@sygnal/sse/dist/page.js
-  var __awaiter = function(thisArg, _arguments, P2, generator) {
-    function adopt(value) {
-      return value instanceof P2 ? value : new P2(function(resolve) {
-        resolve(value);
-      });
-    }
-    return new (P2 || (P2 = Promise))(function(resolve, reject) {
-      function fulfilled(value) {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function rejected(value) {
-        try {
-          step(generator["throw"](value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function step(result) {
-        result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-      }
-      step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-  };
-  var Page = class {
-    static loadCSS(url) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = url;
-      document.head.appendChild(link);
-    }
-    static loadEngineCSS(cssFileName) {
-      let libPath = window.SSE.baseUrl;
-      const cssURL = `${libPath}/css/${cssFileName}`;
-      this.loadCSS(cssURL);
-    }
-    static loadStyle(css) {
-      const style = document.createElement("style");
-      style.innerText = css;
-      document.head.appendChild(style);
-    }
-    static replaceScriptSource(element, newSrc) {
-      element.src = newSrc;
-    }
-    static replaceCSSLink(element, newHref) {
-      element.href = newHref;
-    }
-    static prependToTitle(text) {
-      document.title = `${text}${document.title}`;
-    }
-    static getCurrentScriptUrl() {
-      if (document.currentScript) {
-        const currentScript = document.currentScript;
-        return currentScript.src;
-      }
-      console.error("document.currentScript is not supported in this browser.");
-      return null;
-    }
-    static getCurrentScriptBaseUrl() {
-      const currentScript = document.currentScript;
-      if (currentScript) {
-        const scriptURL = new URL(currentScript.src);
-        const origin = scriptURL.origin;
-        const path = scriptURL.pathname.substring(0, scriptURL.pathname.lastIndexOf("/"));
-        const baseURL = `${origin}${path}`;
-        return baseURL;
-      } else {
-        console.error("Unable to determine the currently executing script.");
-      }
-      return void 0;
-    }
-    static findAncestorWithAttribute(element, attributeName) {
-      let currentElement = element;
-      while (currentElement) {
-        if (currentElement.hasAttribute(attributeName)) {
-          return currentElement;
-        }
-        currentElement = currentElement.parentElement;
-      }
-      return null;
-    }
-    static getAncestorAttributeValue(element, attributeName) {
-      let currentElement = element;
-      while (currentElement) {
-        if (currentElement.hasAttribute(attributeName)) {
-          return currentElement.getAttribute(attributeName);
-        }
-        currentElement = currentElement.parentElement;
-      }
-      return null;
-    }
-    static hasAncestorWithAttribute(element, attributeName) {
-      return this.findAncestorWithAttribute(element, attributeName) !== null;
-    }
-    static convertToPixels(value, contextElement = document.documentElement) {
-      const match2 = value.match(/^(-?\d+\.?\d*)(rem|em|px|vh|vw|%)$/);
-      if (!match2)
-        throw new Error("Invalid value format");
-      const [, amountStr, unit] = match2;
-      const amount = parseFloat(amountStr);
-      switch (unit) {
-        case "px":
-          return amount;
-        case "rem":
-          return amount * parseFloat(getComputedStyle(document.documentElement).fontSize);
-        case "em":
-          return amount * parseFloat(getComputedStyle(contextElement).fontSize);
-        case "vh":
-          return amount * window.innerHeight / 100;
-        case "vw":
-          return amount * window.innerWidth / 100;
-        case "%":
-          return amount * contextElement.clientWidth / 100;
-        default:
-          throw new Error("Unsupported unit");
-      }
-    }
-    static getResponseHeader(headerName, url = void 0) {
-      return __awaiter(this, void 0, void 0, function* () {
-        const headers = yield this.getResponseHeaders(url);
-        if (!headers)
-          return void 0;
-        if (!headers.has(headerName))
-          return void 0;
-        return headers.get(headerName) || void 0;
-      });
-    }
-    static getResponseHeaders(url = void 0) {
-      return __awaiter(this, void 0, void 0, function* () {
-        try {
-          if (!url) {
-            url = window.location.href;
-          }
-          const response = yield fetch(url, {
-            method: "HEAD"
-          });
-          return response.headers;
-        } catch (error) {
-          console.error("Error checking reverse proxy header:", error);
-        }
-        return void 0;
-      });
-    }
-  };
-  Page.Head = class {
-    static loadScript(src, config) {
-      const script = new ScriptElement(src, config);
-      script.appendTo("head");
-    }
-  };
-  Page.Body = class {
-    static loadScript(src, config) {
-      const script = new ScriptElement(src, config);
-      script.appendTo("body");
-    }
-  };
-
-  // node_modules/js-cookie/dist/js.cookie.mjs
-  function assign(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key in source) {
-        target[key] = source[key];
-      }
-    }
-    return target;
-  }
-  var defaultConverter = {
-    read: function(value) {
-      if (value[0] === '"') {
-        value = value.slice(1, -1);
-      }
-      return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
-    },
-    write: function(value) {
-      return encodeURIComponent(value).replace(
-        /%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g,
-        decodeURIComponent
-      );
-    }
-  };
-  function init(converter, defaultAttributes) {
-    function set(name, value, attributes) {
-      if (typeof document === "undefined") {
-        return;
-      }
-      attributes = assign({}, defaultAttributes, attributes);
-      if (typeof attributes.expires === "number") {
-        attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
-      }
-      if (attributes.expires) {
-        attributes.expires = attributes.expires.toUTCString();
-      }
-      name = encodeURIComponent(name).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape);
-      var stringifiedAttributes = "";
-      for (var attributeName in attributes) {
-        if (!attributes[attributeName]) {
-          continue;
-        }
-        stringifiedAttributes += "; " + attributeName;
-        if (attributes[attributeName] === true) {
-          continue;
-        }
-        stringifiedAttributes += "=" + attributes[attributeName].split(";")[0];
-      }
-      return document.cookie = name + "=" + converter.write(value, name) + stringifiedAttributes;
-    }
-    function get(name) {
-      if (typeof document === "undefined" || arguments.length && !name) {
-        return;
-      }
-      var cookies = document.cookie ? document.cookie.split("; ") : [];
-      var jar = {};
-      for (var i2 = 0; i2 < cookies.length; i2++) {
-        var parts = cookies[i2].split("=");
-        var value = parts.slice(1).join("=");
-        try {
-          var found = decodeURIComponent(parts[0]);
-          jar[found] = converter.read(value, found);
-          if (name === found) {
-            break;
-          }
-        } catch (e) {
-        }
-      }
-      return name ? jar[name] : jar;
-    }
-    return Object.create(
-      {
-        set,
-        get,
-        remove: function(name, attributes) {
-          set(
-            name,
-            "",
-            assign({}, attributes, {
-              expires: -1
-            })
-          );
-        },
-        withAttributes: function(attributes) {
-          return init(this.converter, assign({}, this.attributes, attributes));
-        },
-        withConverter: function(converter2) {
-          return init(assign({}, this.converter, converter2), this.attributes);
-        }
-      },
-      {
-        attributes: { value: Object.freeze(defaultAttributes) },
-        converter: { value: Object.freeze(converter) }
-      }
-    );
-  }
-  var api = init(defaultConverter, { path: "/" });
-
-  // node_modules/@sygnal/sse/dist/routeDispatcher.js
-  var RouteDispatcher = class {
-    constructor(SiteClass) {
-      this._SiteClass = SiteClass;
-    }
-    matchRoute(path) {
-      for (const route in this.routes) {
-        if (route.endsWith("*")) {
-          const baseRoute = route.slice(0, -1);
-          if (path.startsWith(baseRoute)) {
-            return this.routes[route];
-          }
-        } else if (route === path) {
-          return this.routes[route];
-        }
-      }
-      return null;
-    }
-    setupRoute() {
-      const site = new this._SiteClass();
-      site.setup();
-      const path = window.location.pathname;
-      const HandlerClass = this.matchRoute(path);
-      if (HandlerClass) {
-        const handlerInstance = new HandlerClass();
-        handlerInstance.setup();
-      } else {
-      }
-    }
-    execRoute() {
-      const site = new this._SiteClass();
-      site.exec();
-      const path = window.location.pathname;
-      const HandlerClass = this.matchRoute(path);
-      if (HandlerClass) {
-        const handlerInstance = new HandlerClass();
-        handlerInstance.exec();
-      } else {
-      }
-    }
-  };
-
-  // src/site.ts
-  var Site = class {
-    constructor() {
-    }
-    setup() {
-    }
-    exec() {
-    }
-  };
-
   // node_modules/tslib/tslib.es6.mjs
   var __assign = function() {
     __assign = Object.assign || function __assign2(t) {
@@ -34938,7 +34581,7 @@
   // node_modules/stylis/src/Utility.js
   var abs = Math.abs;
   var from = String.fromCharCode;
-  var assign2 = Object.assign;
+  var assign = Object.assign;
   function hash(value, length2) {
     return charat(value, 0) ^ 45 ? (((length2 << 2 ^ charat(value, 0)) << 2 ^ charat(value, 1)) << 2 ^ charat(value, 2)) << 2 ^ charat(value, 3) : 0;
   }
@@ -34989,7 +34632,7 @@
     return { value, root, parent, type, props, children, line, column, length: length2, return: "", siblings };
   }
   function copy(root, props) {
-    return assign2(node("", null, null, "", null, null, 0, root.siblings), root, { length: -root.length }, props);
+    return assign(node("", null, null, "", null, null, 0, root.siblings), root, { length: -root.length }, props);
   }
   function lift(root) {
     while (root.root)
@@ -35453,14 +35096,14 @@
                   case ":read-write":
                     lift(copy(element, { props: [replace(value, /:(read-\w+)/, ":" + MOZ + "$1")] }));
                     lift(copy(element, { props: [value] }));
-                    assign2(element, { props: filter(children, callback) });
+                    assign(element, { props: filter(children, callback) });
                     break;
                   case "::placeholder":
                     lift(copy(element, { props: [replace(value, /:(plac\w+)/, ":" + WEBKIT + "input-$1")] }));
                     lift(copy(element, { props: [replace(value, /:(plac\w+)/, ":" + MOZ + "$1")] }));
                     lift(copy(element, { props: [replace(value, /:(plac\w+)/, MS + "input-$1")] }));
                     lift(copy(element, { props: [value] }));
-                    assign2(element, { props: filter(children, callback) });
+                    assign(element, { props: filter(children, callback) });
                     break;
                 }
                 return "";
@@ -36748,22 +36391,11 @@
       root.render(import_react12.default.createElement(map_default2));
     }
   };
-
-  // src/routes.ts
-  var routeDispatcher = () => {
-    var routeDispatcher2 = new RouteDispatcher(Site);
-    routeDispatcher2.routes = {
-      "/": HomePage,
-      "/what-we-scout": WhatWeScout
-    };
-    return routeDispatcher2;
-  };
 })();
 /* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
-/*! js-cookie v3.0.5 | MIT */
 /**
  * @license React
  * react-dom-client.development.js
@@ -36800,4 +36432,4 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-//# sourceMappingURL=routes.js.map
+//# sourceMappingURL=index.js.map

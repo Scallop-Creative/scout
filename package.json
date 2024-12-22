@@ -9,7 +9,8 @@
     "build": "node build.js",
     "watch": "node build.js --watch",
     "esbuild": "esbuild ./src/*.ts --bundle --sourcemap --outdir=dist --watch",
-    "format": "prettier src/*.ts -w"
+    "format": "prettier src/*.ts -w",
+    "compute-map": "node ./src/scripts/computeMap.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,10 @@
   },
   "homepage": "https://github.com/sygnaltech/webflow-dev-template#readme",
   "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/styled-components": "^5.1.34",
     "esbuild": "^0.15.14",
     "prettier": "^2.7.1",
     "serve": "^14.1.1",
@@ -33,8 +38,15 @@
   },
   "dependencies": {
     "@sygnal/sse": "^0.2.0",
+    "@types/leaflet": "^1.9.15",
+    "dotted-map": "^2.2.3",
     "glob": "^10.4.2",
     "gsap": "^3.12.5",
-    "js-cookie": "^3.0.5"
+    "js-cookie": "^3.0.5",
+    "leaflet": "^1.9.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
+    "styled-components": "^6.1.13"
   }
 }

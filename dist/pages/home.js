@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  // src/page/home.ts
+  // src/pages/home.ts
   var HomePage = class {
     constructor() {
     }
