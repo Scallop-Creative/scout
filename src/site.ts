@@ -1,37 +1,29 @@
-
 /*
  * Site
  */
 
 import { IModule, Page } from "@sygnal/sse";
 
-// import gsap from 'gsap'; 
- 
+// import gsap from 'gsap';
 
 export class Site implements IModule {
-
-  constructor() {
-  }
+  constructor() {}
 
   /**
-   * Setup code runs synchronously, inline, at the end of the </head>. 
+   * Setup code runs synchronously, inline, at the end of the </head>.
    * It's used for special init tasks that must be performed early, and which do not require
-   * the DOM to be loaded. 
+   * the DOM to be loaded.
    */
   setup() {
-
-    Page.loadEngineCSS("site.css"); 
-   
+    // Page.loadEngineCSS("site.css");
+    // Page.loadCSS("./dist/index.css");
   }
 
   /**
-   * Exec code runs after the DOM has processed. 
+   * Exec code runs after the DOM has processed.
    */
   exec() {
-
     // Put your site-level custom code here
-    // it will have full access to the DOM 
-
+    // it will have full access to the DOM
   }
-
 }
