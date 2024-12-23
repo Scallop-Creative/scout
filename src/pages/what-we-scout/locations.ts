@@ -5,82 +5,104 @@
 // });
 
 export const colivings = [
-  // {
-  //   name: "Cloud Citadel",
-  //   city: "Briançon",
-  //   location: [4.711, -74.0721],
-  //   website: "http://cloudcitadel.co",
-  // },
   {
-    name: "Chalet Nomad",
-    city: "Hauteluce",
-    location: [45.7539155, 6.5883321],
-    website: "https://www.chaletnomad.com/",
+    country: "Argentina",
+    capital: "Buenos Aires",
+    location: [-34.6037, -58.3816],
   },
-  // {
-  //   name: "Heyday Chalet",
-  //   city: "Morzine",
-  //   location: [46.1907338, 6.7008342],
-  //   website: "https://www.heydaychalet.com/",
-  // },
-  // {
-  //   name: "Chateau Coliving",
-  //   city: "Normandy",
-  //   location: [49.3685012, -1.3605602],
-  //   website: "https://chateaucoliving.com",
-  // },
-  // {
-  //   name: "Outsite",
-  //   city: "Biarritz",
-  //   location: [43.4792839, -1.5627811],
-  //   website: "https://www.outsite.co/locations/biarritz",
-  // },
-  // {
-  //   name: "Swiss Escape",
-  //   city: "Grimentz",
-  //   location: [46.1781488, 7.5733913],
-  //   website: "http://www.swissescape.co/",
-  // },
-  // {
-  //   name: "Sun & Co",
-  //   city: "Javea",
-  //   location: [38.7886872, 0.1607787],
-  //   website: "http://www.sun-and-co.com/",
-  // },
-  // {
-  //   name: "Anceu",
-  //   city: "Pontevedra",
-  //   location: [42.3514634, -8.4667106],
-  //   website: "https://anceu.com/",
-  // },
-  // {
-  //   name: "Nine Coliving",
-  //   city: "Tenerife",
-  //   location: [28.3910257, -16.5250028],
-  //   website: "http://www.ninecoliving.com/",
-  // },
-  // {
-  //   name: "Somewhere Different",
-  //   city: "Blackpool",
-  //   location: [53.8051709, -3.0513392],
-  //   website: "https://www.somewheredifferent.com/uk",
-  // },
-  // {
-  //   name: "Arctic",
-  //   city: "Norway",
-  //   location: [68.2397233, 13.6313107],
-  //   website: "http://www.arcticcoworking.com/",
-  // },
-  // {
-  //   name: "Outsite",
-  //   city: "Lisbon",
-  //   location: [38.7083767, -9.1472796],
-  //   website: "https://www.outsite.co/locations/lisbon-cais-do-sodre",
-  // },
-  // {
-  //   name: "Outsite",
-  //   city: "Ericeira",
-  //   location: [38.9640586, -9.4160498],
-  //   website: "https://www.outsite.co/locations/ericeira",
-  // },
+  {
+    country: "Belize",
+    capital: "Belize City",
+    location: [17.4995, -88.1976],
+  },
+  {
+    country: "Bolivia",
+    capital: "La Paz",
+    location: [-16.4897, -68.1193],
+  },
+  {
+    country: "Brazil",
+    capital: "Brasília",
+    location: [-15.7942, -47.8822],
+  },
+  {
+    country: "Chile",
+    capital: "Santiago",
+    location: [-33.4489, -70.6693],
+  },
+  {
+    country: "Colombia",
+    capital: "Bogotá",
+    location: [4.6097, -74.0817],
+  },
+  {
+    country: "Costa Rica",
+    capital: "San José",
+    location: [9.9281, -84.0907],
+  },
+  {
+    country: "Dominican Republic",
+    capital: "Santo Domingo",
+    location: [18.4739, -69.8908],
+  },
+  {
+    country: "Ecuador",
+    capital: "Quito",
+    location: [-0.1807, -78.4678],
+  },
+  {
+    country: "El Salvador",
+    capital: "San Salvador",
+    location: [13.6989, -89.1913],
+  },
+  {
+    country: "Guatemala",
+    capital: "Guatemala City",
+    location: [14.6281, -90.5203],
+  },
+  {
+    country: "Honduras",
+    capital: "Tegucigalpa",
+    location: [14.0772, -87.2068],
+  },
+  {
+    country: "Mexico",
+    capital: "Mexico City",
+    location: [19.4326, -99.1332],
+  },
+  {
+    country: "Nicaragua",
+    capital: "Managua",
+    location: [12.1493, -86.2734],
+  },
+  {
+    country: "Panama",
+    capital: "Panama City",
+    location: [8.9943, -79.519],
+  },
+  {
+    country: "Paraguay",
+    capital: "Asunción",
+    location: [-25.2637, -57.5759],
+  },
+  {
+    country: "Peru",
+    capital: "Lima",
+    location: [-12.0432, -77.0282],
+  },
+  {
+    country: "Uruguay",
+    capital: "Montevideo",
+    location: [-34.9011, -56.1872],
+  },
+  {
+    country: "Venezuela",
+    capital: "Caracas",
+    location: [10.4806, -66.9036],
+  },
+  {
+    country: "Canada",
+    capital: "Canada",
+    location: [53.5482, -113.5147],
+  },
 ];

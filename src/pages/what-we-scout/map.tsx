@@ -1,7 +1,7 @@
 import "leaflet/dist/leaflet.css";
 
 import styled from "styled-components";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CircleMarker, MapContainer, ImageOverlay } from "react-leaflet";
 import DottedMap from "dotted-map/without-countries";
 
@@ -10,15 +10,15 @@ import { colivings } from "./locations";
 import React from "react";
 import { LatLngBoundsExpression } from "leaflet";
 
-const map = new DottedMap({ map: mapJson });
+const dotMap = new DottedMap({ map: mapJson });
 
-const svgMap = map.getSVG({
+const svgMap = dotMap.getSVG({
   radius: 0.22,
-  color: "#423B38",
+  color: "#858585",
   shape: "circle",
-  backgroundColor: "#020300",
+  backgroundColor: "white",
 });
-const { region } = map.image;
+const { region } = dotMap.image;
 
 const bounds: LatLngBoundsExpression = [
   [region.lat.min, region.lng.min],
@@ -26,8 +26,9 @@ const bounds: LatLngBoundsExpression = [
 ];
 
 const Map = styled(MapContainer)`
-  height: 100px;
-  width: 100px;
+  height: 700px;
+  width: 100%;
+  background: white;
   // overflow: hidden;
 `;
 const Tooltip = styled.div`
@@ -35,11 +36,11 @@ const Tooltip = styled.div`
   top: 100px;
   left: 100px;
   z-index: 100000;
-  color: white;
+  color: black;
   top: ${({ $top }) => $top}px;
   left: ${({ $left }) => $left + 12}px;
   padding-left: 4px;
-  border-left: 2px solid white;
+  border-left: 2px solid black;
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
 
@@ -49,25 +50,32 @@ const Tooltip = styled.div`
 const MapComponent = () => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [displayedColiving, setDisplayedColiving] = useState<null | {
-    name: string;
-    city: string;
+    country: string;
+    capital: string;
     location: number[];
-    website: string;
   }>(null);
   const [tooltipCoords, setTooltipCoords] = useState({ top: 0, left: 0 });
+  const [map, setMap] = useState(null);
+
+  useEffect(() => {
+    if (map) {
+      map.setMaxBounds(bounds);
+      map.on("drag", function () {
+        map.panInsideBounds(bounds, { animate: false });
+      });
+    }
+  }, [map]);
 
   return (
     <div>
       <Map
-        center={[46.204391, 6.143158]}
-        // center={[9.787141, -84.518303]}
-        // zoom={5}
-        dragging={false}
-        scrollWheelZoom={false}
-        // maxZoom={6}
-        // minZoom={4}
+        center={[9.787141, -84.518303]}
+        zoom={1}
+        maxZoom={6}
+        minZoom={3}
         attributionControl={false}
         zoomControl={false}
+        ref={setMap}
       >
         <ImageOverlay
           url={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
@@ -79,20 +87,18 @@ const MapComponent = () => {
           const isAnotherColivingDisplayed =
             !isColivingDisplayed && isTooltipVisible;
           const [lat, lng] = coliving.location;
-          const pin = map.getPin({ lat, lng });
-
-          console.log("marker", pin);
+          const pin = dotMap.getPin({ lat, lng });
 
           return (
             <CircleMarker
               center={[pin.lat, pin.lng]}
               radius={4}
               pathOptions={{
-                fillColor: isColivingDisplayed ? "#F0F600" : "#00E5E8",
+                fillColor: isColivingDisplayed ? "#F0F600" : "#0a4b51",
                 color: "transparent",
                 fillOpacity: isAnotherColivingDisplayed ? 0.6 : 1,
               }}
-              key={coliving.website}
+              key={coliving.capital}
               eventHandlers={{
                 mouseover: (e) => {
                   setTooltipCoords({
@@ -105,7 +111,7 @@ const MapComponent = () => {
                 mouseout: () => {
                   setIsTooltipVisible(false);
                 },
-                click: () => window.open(coliving.website, "_blank"),
+                // click: () => window.open(coliving.website, "_blank"),
               }}
             />
           );
@@ -117,9 +123,9 @@ const MapComponent = () => {
         $visible={isTooltipVisible}
       >
         <div>
-          <b>{displayedColiving?.name}</b>
+          <b>{displayedColiving?.country}</b>
         </div>
-        {displayedColiving?.city}
+        {displayedColiving?.capital}
       </Tooltip>
     </div>
   );

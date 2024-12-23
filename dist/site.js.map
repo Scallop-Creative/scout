@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/site.ts"],
+  "sourcesContent": ["/*\n * Site\n */\n\nimport { IModule, Page } from \"@sygnal/sse\";\n\n// import gsap from 'gsap';\n\nexport class Site implements IModule {\n  constructor() {}\n\n  /**\n   * Setup code runs synchronously, inline, at the end of the </head>.\n   * It's used for special init tasks that must be performed early, and which do not require\n   * the DOM to be loaded.\n   */\n  setup() {\n    // Page.loadEngineCSS(\"site.css\");\n    // Page.loadCSS(\"./dist/index.css\");\n  }\n\n  /**\n   * Exec code runs after the DOM has processed.\n   */\n  exec() {\n    // Put your site-level custom code here\n    // it will have full access to the DOM\n  }\n}\n"],
+  "mappings": ";;;AAQO,MAAM,OAAN,MAA8B;AAAA,IACnC,cAAc;AAAA,IAAC;AAAA,IAOf,QAAQ;AAAA,IAGR;AAAA,IAKA,OAAO;AAAA,IAGP;AAAA,EACF;",
+  "names": []
+}
