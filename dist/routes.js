@@ -37009,9 +37009,9 @@
     }, [map]);
     return /* @__PURE__ */ import_react11.default.createElement("div", null, /* @__PURE__ */ import_react11.default.createElement(Map2, {
       center: [9.787141, -84.518303],
-      zoom: 1,
+      zoom: 3,
       maxZoom: 6,
-      minZoom: 3,
+      minZoom: 1,
       attributionControl: false,
       zoomControl: false,
       ref: setMap

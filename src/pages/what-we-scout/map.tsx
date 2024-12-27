@@ -81,9 +81,9 @@ const MapComponent = () => {
     <div>
       <Map
         center={[9.787141, -84.518303]}
-        zoom={1}
+        zoom={3}
         maxZoom={6}
-        minZoom={3}
+        minZoom={1}
         attributionControl={false}
         zoomControl={false}
         ref={setMap}
