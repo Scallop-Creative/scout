@@ -39,12 +39,14 @@
   "dependencies": {
     "@sygnal/sse": "^0.2.0",
     "@types/leaflet": "^1.9.15",
+    "countup.js": "^2.8.0",
     "dotted-map": "^2.2.3",
     "glob": "^10.4.2",
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "react": "^19.0.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
     "styled-components": "^6.1.13"

@@ -3,23 +3,24 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import { CircleMarker, MapContainer, ImageOverlay } from "react-leaflet";
-import DottedMap from "dotted-map/without-countries";
+// import DottedMap from "dotted-map/without-countries";
+import DottedMap from "dotted-map";
 
 import mapJson from "./map.json";
 import { colivings } from "./locations";
 import React from "react";
 import { LatLngBoundsExpression } from "leaflet";
 
-const dotMap = new DottedMap({ map: mapJson });
+// const dotMap = new DottedMap({ map: mapJson });
 
-// const dotMap = new DottedMap({
-//   height: 100,
-//   grid: "diagonal",
-//   region: {
-//     lat: { min: -56, max: 72 },
-//     lng: { min: -179, max: -30 },
-//   },
-// });
+const dotMap = new DottedMap({
+  height: 100,
+  grid: "diagonal",
+  // region: {
+  //   lat: { min: -56, max: 72 },
+  //   lng: { min: -179, max: -30 },
+  // },
+});
 
 const svgMap = dotMap.getSVG({
   radius: 0.22,
@@ -45,6 +46,7 @@ const Tooltip = styled.div`
   top: 100px;
   left: 100px;
   z-index: 100000;
+  background-color: white;
   color: black;
   top: ${({ $top }) => $top}px;
   left: ${({ $left }) => $left + 12}px;
@@ -101,9 +103,9 @@ const MapComponent = () => {
           return (
             <CircleMarker
               center={[pin.lat, pin.lng]}
-              radius={4}
+              radius={isColivingDisplayed ? 8 : 4}
               pathOptions={{
-                fillColor: isColivingDisplayed ? "#F0F600" : "#0a4b51",
+                fillColor: "#0a4b51",
                 color: "transparent",
                 fillOpacity: isAnotherColivingDisplayed ? 0.6 : 1,
               }}
