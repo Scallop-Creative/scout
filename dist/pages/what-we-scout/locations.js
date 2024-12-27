@@ -153,297 +153,297 @@
       location: [47.6062, -122.3321]
     },
     {
-      state: "Texas",
+      country: "Texas",
       city: "Houston",
       location: [29.7604, -95.3698]
     },
     {
-      state: "Texas",
+      country: "Texas",
       city: "Dallas",
       location: [32.7767, -96.797]
     },
     {
-      state: "Texas",
+      country: "Texas",
       city: "San Antonio",
       location: [29.4241, -98.4936]
     },
     {
-      state: "Texas",
+      country: "Texas",
       city: "Austin",
       location: [30.2672, -97.7431]
     },
     {
-      state: "Colorado",
+      country: "Colorado",
       city: "Denver",
       location: [39.7392, -104.9903]
     },
     {
-      state: "Nevada",
+      country: "Nevada",
       city: "Las Vegas",
       location: [36.1699, -115.1398]
     },
     {
-      state: "North Carolina",
+      country: "North Carolina",
       city: "Raleigh",
       location: [35.7796, -78.6382]
     },
     {
-      state: "Illinois",
+      country: "Illinois",
       city: "Chicago",
       location: [41.8781, -87.6298]
     },
     {
-      state: "Pennsylvania",
+      country: "Pennsylvania",
       city: "Philadelphia",
       location: [39.9526, -75.1652]
     },
     {
-      state: "Indiana",
+      country: "Indiana",
       city: "Indianapolis",
       location: [39.7684, -86.1581]
     },
     {
-      state: "District of Columbia",
+      country: "District of Columbia",
       city: "Washington D.C.",
       location: [38.8951, -77.0364]
     },
     {
-      state: "California",
+      country: "California",
       city: "San Jose",
       location: [37.3394, -121.8949]
     },
     {
-      state: "Arizona",
+      country: "Arizona",
       city: "Phoenix",
       location: [33.4484, -112.074]
     },
     {
-      state: "Colorado",
+      country: "Colorado",
       city: "Aspen",
       location: [39.1911, -106.8176]
     },
     {
-      state: "Alabama",
+      country: "Alabama",
       city: "Huntsville",
       location: [34.7304, -86.5861]
     },
     {
-      state: "Alaska",
+      country: "Alaska",
       city: "Anchorage",
       location: [61.2181, -149.8952]
     },
     {
-      state: "Arkansas",
+      country: "Arkansas",
       city: "Little Rock",
       location: [34.736, -92.2896]
     },
     {
-      state: "Connecticut",
+      country: "Connecticut",
       city: "Hartford",
       location: [41.7627, -72.6743]
     },
     {
-      state: "Delaware",
+      country: "Delaware",
       city: "Dover",
       location: [39.1619, -75.5277]
     },
     {
-      state: "Florida",
+      country: "Florida",
       city: "Jacksonville",
       location: [30.3322, -81.6557]
     },
     {
-      state: "Georgia",
+      country: "Georgia",
       city: "Atlanta",
       location: [33.749, -84.388]
     },
     {
-      state: "Hawaii",
+      country: "Hawaii",
       city: "Honolulu",
       location: [21.3069, -157.8583]
     },
     {
-      state: "Hawaii",
+      country: "Hawaii",
       city: "Maui",
       location: [20.8974, -156.4722]
     },
     {
-      state: "Hawaii",
+      country: "Hawaii",
       city: "Oahu",
       location: [21.4499, -157.975]
     },
     {
-      state: "Idaho",
+      country: "Idaho",
       city: "Boise",
       location: [43.615, -116.2022]
     },
     {
-      state: "Iowa",
+      country: "Iowa",
       city: "Des Moines",
       location: [41.5868, -93.6121]
     },
     {
-      state: "Kansas",
+      country: "Kansas",
       city: "Wichita",
       location: [37.687, -97.3375]
     },
     {
-      state: "Kentucky",
+      country: "Kentucky",
       city: "Louisville",
       location: [38.2527, -85.7585]
     },
     {
-      state: "Louisiana",
+      country: "Louisiana",
       city: "New Orleans",
       location: [29.9511, -90.0715]
     },
     {
-      state: "Maine",
+      country: "Maine",
       city: "Portland",
       location: [43.6611, -70.2577]
     },
     {
-      state: "Maryland",
+      country: "Maryland",
       city: "Annapolis",
       location: [38.9729, -76.4892]
     },
     {
-      state: "Massachusetts",
+      country: "Massachusetts",
       city: "Boston",
       location: [42.3601, -71.0589]
     },
     {
-      state: "Michigan",
+      country: "Michigan",
       city: "Detroit",
       location: [42.3314, -83.0458]
     },
     {
-      state: "Minnesota",
+      country: "Minnesota",
       city: "Minneapolis",
       location: [44.9778, -93.265]
     },
     {
-      state: "Mississippi",
+      country: "Mississippi",
       city: "Jackson",
       location: [32.2988, -90.1848]
     },
     {
-      state: "Missouri",
+      country: "Missouri",
       city: "Kansas City",
       location: [39.0997, -94.5786]
     },
     {
-      state: "Montana",
+      country: "Montana",
       city: "Billings",
       location: [45.7681, -108.5591]
     },
     {
-      state: "Nebraska",
+      country: "Nebraska",
       city: "Omaha",
       location: [41.2524, -95.9943]
     },
     {
-      state: "New Hampshire",
+      country: "New Hampshire",
       city: "Manchester",
       location: [42.9976, -71.4579]
     },
     {
-      state: "New Jersey",
+      country: "New Jersey",
       city: "Newark",
       location: [40.7357, -74.1724]
     },
     {
-      state: "New Mexico",
+      country: "New Mexico",
       city: "Albuquerque",
       location: [35.0844, -106.6511]
     },
     {
-      state: "North Carolina",
+      country: "North Carolina",
       city: "Charlotte",
       location: [35.2271, -80.8431]
     },
     {
-      state: "North Dakota",
+      country: "North Dakota",
       city: "Fargo",
       location: [46.8772, -96.7899]
     },
     {
-      state: "Ohio",
+      country: "Ohio",
       city: "Columbus",
       location: [39.9612, -82.9988]
     },
     {
-      state: "Oklahoma",
+      country: "Oklahoma",
       city: "Oklahoma City",
       location: [35.4676, -97.5164]
     },
     {
-      state: "Rhode Island",
+      country: "Rhode Island",
       city: "Providence",
       location: [41.824, -71.4128]
     },
     {
-      state: "South Carolina",
+      country: "South Carolina",
       city: "Charleston",
       location: [32.7765, -79.9311]
     },
     {
-      state: "South Dakota",
+      country: "South Dakota",
       city: "Sioux Falls",
       location: [43.545, -96.7305]
     },
     {
-      state: "Tennessee",
+      country: "Tennessee",
       city: "Nashville",
       location: [36.1627, -86.7816]
     },
     {
-      state: "Utah",
+      country: "Utah",
       city: "Salt Lake City",
       location: [40.7608, -111.891]
     },
     {
-      state: "Vermont",
+      country: "Vermont",
       city: "Burlington",
       location: [44.4759, -73.2121]
     },
     {
-      state: "Virginia",
+      country: "Virginia",
       city: "Virginia Beach",
       location: [36.8508, -75.9777]
     },
     {
-      state: "West Virginia",
+      country: "West Virginia",
       city: "Charleston",
       location: [38.3494, -81.6333]
     },
     {
-      state: "New Mexico",
+      country: "New Mexico",
       city: "Santa Fe",
       location: [35.687, -105.9375]
     },
     {
-      state: "Wisconsin",
+      country: "Wisconsin",
       city: "Milwaukee",
       location: [43.0389, -87.9065]
     },
     {
-      state: "Wyoming",
+      country: "Wyoming",
       city: "Cheyenne",
       location: [41.1401, -104.8027]
     },
     {
-      state: "Virginia",
+      country: "Virginia",
       city: "Richmond",
       location: [37.5407, -77.436]
     },
     {
-      state: "Colorado",
+      country: "Colorado",
       city: "Boulder",
       location: [40.0149, -105.2705]
     },
     {
-      state: "Colorado",
+      country: "Colorado",
       city: "Vail",
       location: [39.6392, -106.3775]
     },
@@ -458,7 +458,7 @@
       location: [51.5074, -0.1278]
     },
     {
-      state: "Connecticut",
+      country: "Connecticut",
       city: "Stamford",
       location: [41.0529, -73.5579]
     },
